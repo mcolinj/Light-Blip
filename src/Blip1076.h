@@ -2,6 +2,8 @@
 #ifndef __BLIP1076_H__
 #define __BLIP1076_H__
 
+#include "Arduino.h"
+
 /* Forward declaration to avoid dependency. */
 class Adafruit_NeoPixel;
 

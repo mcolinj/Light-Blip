@@ -1,0 +1,3 @@
+Blip1076  KEYWORD
+begin     KEYWORD
+speedup   KEYWORD

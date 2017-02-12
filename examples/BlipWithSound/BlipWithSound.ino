@@ -121,13 +121,18 @@ void Blip1076::speedup(float factor)
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS      61
 
+// Main loop has minimum delay to provide cap on velocity
+#define MINIMUM_DELAY_PER_LOOP 25
+
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
 // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
 // example for more information on possible values.
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN_PIXELS, NEO_GRB + NEO_KHZ800);
-Blip1076 blip = Blip1076(pixels, pixels.Color(150,0,150), 0, 33);
+Blip1076 blip = Blip1076(pixels, pixels.Color(150,0,150), 0, 330);
 
 int interrupt_count = 0;
+
+
 //
 //   This function gets installed as an "interrupt handler".
 //   Every time the input changes according to the way the
@@ -168,8 +173,23 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   blip.move();
+
+  //
+  // once a certain speed is acheived, we want
+  // a gradual decay
   if (blip.sleep_time() < 100) {
     blip.speedup(0.999);
   }
-  delay(blip.sleep_time()+1);
+
+  /* 
+   * We delay based on the sleep time to simulate
+   * velocity.
+   */
+  delay(blip.sleep_time());
+
+  /*
+   * Put a limit on the maximum speed with
+   * an additional delay.
+   */
+   delay(MINIMUM_DELAY_PER_LOOP);
 }

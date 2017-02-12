@@ -1,8 +1,9 @@
 // NeoPixel Ring simple sketch (c) 2013 Shae Erisson
 // released under the GPLv3 license to match the rest of the AdaFruit NeoPixel library
 
-#include <AdaFruit_NeoPixel.h>
-#include <Blip1076.h>
+#include "Arduino.h"
+#include "AdaFruit_NeoPixel.h"
+#include "Blip1076.h"
 
 /* Blip
  *  
