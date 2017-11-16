@@ -13,7 +13,7 @@
 #define PIN            6
 
 // How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS      60
+#define NUMPIXELS      30
 
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
 // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
@@ -31,35 +31,8 @@ void setup() {
   blip.begin(); // This initializes the NeoPixel library.
 }
 
-//
-// Meter converts a number N into a number of illuminated lights.
-//
-// Display the meter value by transitioning the lights from from_value
-// to the to_value.   Assumes that from_value lights are already set.
-//
-#define METER_SPEED 1
-void meter_from(int from_value, int to_value) {
-  // move from low to high
-  if (from_value <= to_value) {
-      for (int i=from_value; i<=to_value; i++) {
-          pixels.setPixelColor(i, pixels.Color(0, 50, 0));
-
-          pixels.show();
-
-          delay(METER_SPEED);
-      }
-  } else {
-      for (int i=from_value; i>=to_value; i--) {
-          pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-
-          pixels.show();
-
-          delay(METER_SPEED); 
-      }
-  }
-}
 
 void loop() {
     blip.move();
-    delay(blip.speed_as_delay());
+    delay(blip.sleep_time());
 }
