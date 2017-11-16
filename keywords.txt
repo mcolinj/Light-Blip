@@ -1,5 +1,16 @@
+#  Note:  Use single "tab" between the identifier
+#         and the syntax coloring directive.
+#
+#
+#  Class names
 #
 Blip1076	KEYWORD1
 #
+#  Methods and functions
+#
 begin	KEYWORD2
 speedup	KEYWORD2
+#
+#  Defined literal contants
+#
+SPEED_SCALE	LITERAL1
