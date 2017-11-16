@@ -1,5 +1,5 @@
 #
-Blip1076  KEYWORD1
+Blip1076	KEYWORD1
 #
-begin     KEYWORD2
-speedup   KEYWORD2
+begin	KEYWORD2
+speedup	KEYWORD2
