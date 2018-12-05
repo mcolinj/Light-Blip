@@ -10,8 +10,8 @@ class Adafruit_NeoPixel;
 class Blip1076 {
   public:
       //
-      //   Associate the blip with the NeoPixel controller and draw
-      //   it at the starting location.
+      //   No need for the NeoPixel association.  Need float velocity,
+      //   and need ends of operating range as well a starting positions.
       //
       Blip1076(Adafruit_NeoPixel &pixels, uint32_t color, int x, int v); 
 
@@ -34,6 +34,7 @@ class Blip1076 {
       void speedup(float factor);
       
   private:
+    //  remove/modify these to support floating point velocity
     Adafruit_NeoPixel &_pixels;     // keep a reference to controller blip can request display
     int _v;                         // velocity (negative moves down, positive moves up)
     int _x;                         // the location on the blip
